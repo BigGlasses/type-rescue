@@ -15,7 +15,6 @@ speed-measure-plugin.json
 # IDEs and editors
 /.idea
 .project
-.vscode
 .classpath
 .c9/
 *.launch

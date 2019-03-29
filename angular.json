@@ -3,17 +3,39 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "type-resuce": {
+    "repo": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:class": {
+          "spec": false
+        },
+        "@schematics/angular:component": {
+          "spec": false
+        },
+        "@schematics/angular:directive": {
+          "spec": false
+        },
+        "@schematics/angular:guard": {
+          "spec": false
+        },
+        "@schematics/angular:module": {
+          "spec": false
+        },
+        "@schematics/angular:pipe": {
+          "spec": false
+        },
+        "@schematics/angular:service": {
+          "spec": false
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/type-resuce",
+            "outputPath": "dist/repo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -57,18 +79,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "type-resuce:build"
+            "browserTarget": "repo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "type-resuce:build:production"
+              "browserTarget": "repo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "type-resuce:build"
+            "browserTarget": "repo:build"
           }
         },
         "test": {
@@ -102,7 +124,7 @@
         }
       }
     },
-    "type-resuce-e2e": {
+    "repo-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -111,11 +133,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "type-resuce:serve"
+            "devServerTarget": "repo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "type-resuce:serve:production"
+              "devServerTarget": "repo:serve:production"
             }
           }
         },
@@ -131,5 +153,5 @@
       }
     }
   },
-  "defaultProject": "type-resuce"
+  "defaultProject": "repo"
 }

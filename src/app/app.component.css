@@ -1,0 +1,76 @@
+#bombbar {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+}   
+
+
+#bombbar >input {
+    background-color: darkslategrey;
+    color: greenyellow;
+    font-size: 48px;
+}
+
+.bombContainer {
+    max-width : 600px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mat-grid-tile {
+    border-right: black 2px solid;
+    border-left: black 2px solid;
+}
+.grid-top {
+    border-bottom: black 2px solid;
+}
+
+.bomb {
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 50%;
+    display: flex;
+    border: black 2px solid;
+}
+
+.bombtime{
+    
+    background: white;
+    border: black 2px solid;
+    border-radius: 50%;
+    min-width : 128px;
+    min-height : 128px;
+    max-width : 128px;
+    max-height : 128px;
+    /* overflow: scroll; */
+    color: black;
+    font-weight: bold;
+    font-size: 64px;
+    margin: auto;
+    text-align: center;
+}
+.bombword{
+    background: white;
+    border: black 2px solid;
+    border-radius: 2px;
+}
+.bombword >p{
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.bombred {
+    background: red;
+}
+.bombblue {
+    background: blue;
+}
+.bombgreen {
+    background: green;
+}

@@ -41,7 +41,7 @@ module.exports = "@charset \"UTF-8\";\n\n/*!\n * animate.css -http://daneden.me/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#bombbar {\r\n    position: fixed;\r\n    bottom: 100px;\r\n    left: 50%;\r\n    -webkit-transform: translateX(-50%);\r\n            transform: translateX(-50%);\r\n    padding: 20px;\r\n}   \r\n\r\n\r\n#bombbar >input {\r\n    background-color: darkslategrey;\r\n    color: greenyellow;\r\n    font-size: 48px;\r\n}   \r\n\r\n\r\n.bombContainer {\r\n    max-width : 600px;\r\n    height: 600px;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n}   \r\n\r\n\r\n.mat-grid-tile {\r\n    border-right: black 2px solid;\r\n    border-left: black 2px solid;\r\n}   \r\n\r\n\r\n.grid-top {\r\n    border-bottom: black 2px solid;\r\n}   \r\n\r\n\r\n.bomb {\r\n    min-width: 100%;\r\n    min-height: 100%;\r\n    border-radius: 50%;\r\n    display: flex;\r\n    border: black 2px solid;\r\n}   \r\n\r\n\r\n.bombtime{\r\n    \r\n    background: white;\r\n    border: black 2px solid;\r\n    border-radius: 50%;\r\n    min-width : 128px;\r\n    min-height : 128px;\r\n    max-width : 128px;\r\n    max-height : 128px;\r\n    /* overflow: scroll; */\r\n    color: black;\r\n    font-weight: bold;\r\n    font-size: 64px;\r\n    margin: auto;\r\n    text-align: center;\r\n}   \r\n\r\n\r\n.bombword{\r\n    background: white;\r\n    border: black 2px solid;\r\n    border-radius: 2px;\r\n}   \r\n\r\n\r\n.bombword >p{\r\n    color: black;\r\n    font-weight: bold;\r\n    font-size: 20px;\r\n    margin: auto;\r\n    text-align: center;\r\n}   \r\n\r\n\r\n.bombred {\r\n    background: red;\r\n}   \r\n\r\n\r\n.bombblue {\r\n    background: blue;\r\n}   \r\n\r\n\r\n.bombgreen {\r\n    background: green;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxnQkFBZ0I7SUFDaEIsY0FBYztJQUNkLFVBQVU7SUFDVixvQ0FBNEI7WUFBNUIsNEJBQTRCO0lBQzVCLGNBQWM7Q0FDakI7OztBQUdEO0lBQ0ksZ0NBQWdDO0lBQ2hDLG1CQUFtQjtJQUNuQixnQkFBZ0I7Q0FDbkI7OztBQUVEO0lBQ0ksa0JBQWtCO0lBQ2xCLGNBQWM7SUFDZCxrQkFBa0I7SUFDbEIsbUJBQW1CO0NBQ3RCOzs7QUFFRDtJQUNJLDhCQUE4QjtJQUM5Qiw2QkFBNkI7Q0FDaEM7OztBQUNEO0lBQ0ksK0JBQStCO0NBQ2xDOzs7QUFFRDtJQUNJLGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIsbUJBQW1CO0lBQ25CLGNBQWM7SUFDZCx3QkFBd0I7Q0FDM0I7OztBQUVEOztJQUVJLGtCQUFrQjtJQUNsQix3QkFBd0I7SUFDeEIsbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixtQkFBbUI7SUFDbkIsa0JBQWtCO0lBQ2xCLG1CQUFtQjtJQUNuQix1QkFBdUI7SUFDdkIsYUFBYTtJQUNiLGtCQUFrQjtJQUNsQixnQkFBZ0I7SUFDaEIsYUFBYTtJQUNiLG1CQUFtQjtDQUN0Qjs7O0FBQ0Q7SUFDSSxrQkFBa0I7SUFDbEIsd0JBQXdCO0lBQ3hCLG1CQUFtQjtDQUN0Qjs7O0FBQ0Q7SUFDSSxhQUFhO0lBQ2Isa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixhQUFhO0lBQ2IsbUJBQW1CO0NBQ3RCOzs7QUFFRDtJQUNJLGdCQUFnQjtDQUNuQjs7O0FBQ0Q7SUFDSSxpQkFBaUI7Q0FDcEI7OztBQUNEO0lBQ0ksa0JBQWtCO0NBQ3JCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjYm9tYmJhciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICBib3R0b206IDEwMHB4O1xyXG4gICAgbGVmdDogNTAlO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xyXG4gICAgcGFkZGluZzogMjBweDtcclxufSAgIFxyXG5cclxuXHJcbiNib21iYmFyID5pbnB1dCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBkYXJrc2xhdGVncmV5O1xyXG4gICAgY29sb3I6IGdyZWVueWVsbG93O1xyXG4gICAgZm9udC1zaXplOiA0OHB4O1xyXG59XHJcblxyXG4uYm9tYkNvbnRhaW5lciB7XHJcbiAgICBtYXgtd2lkdGggOiA2MDBweDtcclxuICAgIGhlaWdodDogNjAwcHg7XHJcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcclxuICAgIG1hcmdpbi1yaWdodDogYXV0bztcclxufVxyXG5cclxuLm1hdC1ncmlkLXRpbGUge1xyXG4gICAgYm9yZGVyLXJpZ2h0OiBibGFjayAycHggc29saWQ7XHJcbiAgICBib3JkZXItbGVmdDogYmxhY2sgMnB4IHNvbGlkO1xyXG59XHJcbi5ncmlkLXRvcCB7XHJcbiAgICBib3JkZXItYm90dG9tOiBibGFjayAycHggc29saWQ7XHJcbn1cclxuXHJcbi5ib21iIHtcclxuICAgIG1pbi13aWR0aDogMTAwJTtcclxuICAgIG1pbi1oZWlnaHQ6IDEwMCU7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYm9yZGVyOiBibGFjayAycHggc29saWQ7XHJcbn1cclxuXHJcbi5ib21idGltZXtcclxuICAgIFxyXG4gICAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgICBib3JkZXI6IGJsYWNrIDJweCBzb2xpZDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICAgIG1pbi13aWR0aCA6IDEyOHB4O1xyXG4gICAgbWluLWhlaWdodCA6IDEyOHB4O1xyXG4gICAgbWF4LXdpZHRoIDogMTI4cHg7XHJcbiAgICBtYXgtaGVpZ2h0IDogMTI4cHg7XHJcbiAgICAvKiBvdmVyZmxvdzogc2Nyb2xsOyAqL1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXNpemU6IDY0cHg7XHJcbiAgICBtYXJnaW46IGF1dG87XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuLmJvbWJ3b3Jke1xyXG4gICAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgICBib3JkZXI6IGJsYWNrIDJweCBzb2xpZDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDJweDtcclxufVxyXG4uYm9tYndvcmQgPnB7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLmJvbWJyZWQge1xyXG4gICAgYmFja2dyb3VuZDogcmVkO1xyXG59XHJcbi5ib21iYmx1ZSB7XHJcbiAgICBiYWNrZ3JvdW5kOiBibHVlO1xyXG59XHJcbi5ib21iZ3JlZW4ge1xyXG4gICAgYmFja2dyb3VuZDogZ3JlZW47XHJcbn0iXX0= */"
+module.exports = "#bombbar {\r\n    position: fixed;\r\n    bottom: 100px;\r\n    left: 50%;\r\n    -webkit-transform: translateX(-50%);\r\n            transform: translateX(-50%);\r\n    padding: 20px;\r\n}   \r\n\r\n\r\n#bombbar >input {\r\n    background-color: darkslategrey;\r\n    color: greenyellow;\r\n    font-size: 48px;\r\n}   \r\n\r\n\r\ninput{\r\n    text-align: center;\r\n}   \r\n\r\n\r\n.wordlog {\r\n    position: fixed;\r\n    right: 0;\r\n    width: 200px;\r\n    top: 100px;\r\n    height: 600px;\r\n    border: 2px white solid;\r\n    overflow-y: auto;\r\n    padding: 10px;\r\n}   \r\n\r\n\r\n.wordlog >p{\r\n    color: white;\r\n    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;\r\n}   \r\n\r\n\r\n.title {\r\n    position: absolute;\r\n    left: 50px;\r\n    top: 50px;\r\n    font-style: italic;\r\n    font-size: 72px;\r\n    color: white;\r\n    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;\r\n\r\n}   \r\n\r\n\r\n.score{\r\n    text-align: center;\r\n}   \r\n\r\n\r\n.score >p{\r\n    font-size: 72px;\r\n    color: white;\r\n    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;\r\n}   \r\n\r\n\r\n.bombContainer {\r\n    background-image: url(\"/assets/bombgrid.png\");\r\n    max-width : 600px;\r\n    height: 600px;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n}   \r\n\r\n\r\n.mat-grid-tile {\r\n    border-right: black 2px solid;\r\n    border-left: black 2px solid;\r\n}   \r\n\r\n\r\n.grid-top {\r\n    border-bottom: black 2px solid;\r\n}   \r\n\r\n\r\n.bomb {\r\n    min-width: 100%;\r\n    min-height: 100%;\r\n    border-radius: 50%;\r\n    display: flex;\r\n}   \r\n\r\n\r\n.background {\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: fixed;\r\n    z-index: -1;\r\n    background: grey;\r\n}   \r\n\r\n\r\n.bombtime{\r\n    min-width : 128px;\r\n    min-height : 128px;\r\n    max-width : 128px;\r\n    max-height : 128px;\r\n    /* overflow: scroll; */\r\n    color: white;\r\n    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;\r\n    font-weight: bold;\r\n    font-size: 72px;\r\n    position: absolute;\r\n    top: 22%;\r\n    left: 50%;\r\n    -webkit-transform: translateX(-50%);\r\n            transform: translateX(-50%);\r\n    text-align: center;\r\n}   \r\n\r\n\r\n.bombsoon{\r\n    color: red;\r\n}   \r\n\r\n\r\n.bombword{\r\n    position: absolute;\r\n    top: 85%;\r\n    left: 50%;\r\n    -webkit-transform: translateX(-50%);\r\n            transform: translateX(-50%);\r\n    border-radius: 2px;\r\n}   \r\n\r\n\r\n.bombword >p{\r\n    color: white;\r\n    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;\r\n\r\n    font-weight: bold;\r\n    font-size: 20px;\r\n    margin: auto;\r\n    text-align: center;\r\n}   \r\n\r\n\r\n.bombred {\r\n    background-image: url(\"/assets/redbubble.png\");\r\n}   \r\n\r\n\r\n.bombblue {\r\n    background-image: url(\"/assets/bluebubble.png\");\r\n}   \r\n\r\n\r\n.bombgreen {\r\n    background-image: url(\"/assets/greenbubble.png\");\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxnQkFBZ0I7SUFDaEIsY0FBYztJQUNkLFVBQVU7SUFDVixvQ0FBNEI7WUFBNUIsNEJBQTRCO0lBQzVCLGNBQWM7Q0FDakI7OztBQUdEO0lBQ0ksZ0NBQWdDO0lBQ2hDLG1CQUFtQjtJQUNuQixnQkFBZ0I7Q0FDbkI7OztBQUVEO0lBQ0ksbUJBQW1CO0NBQ3RCOzs7QUFFRDtJQUNJLGdCQUFnQjtJQUNoQixTQUFTO0lBQ1QsYUFBYTtJQUNiLFdBQVc7SUFDWCxjQUFjO0lBQ2Qsd0JBQXdCO0lBQ3hCLGlCQUFpQjtJQUNqQixjQUFjO0NBQ2pCOzs7QUFFRDtJQUNJLGFBQWE7SUFDYixrRUFBa0U7Q0FDckU7OztBQUVEO0lBQ0ksbUJBQW1CO0lBQ25CLFdBQVc7SUFDWCxVQUFVO0lBQ1YsbUJBQW1CO0lBQ25CLGdCQUFnQjtJQUNoQixhQUFhO0lBQ2Isa0VBQWtFOztDQUVyRTs7O0FBRUQ7SUFDSSxtQkFBbUI7Q0FDdEI7OztBQUVEO0lBQ0ksZ0JBQWdCO0lBQ2hCLGFBQWE7SUFDYixrRUFBa0U7Q0FDckU7OztBQUdEO0lBQ0ksOENBQThDO0lBQzlDLGtCQUFrQjtJQUNsQixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLG1CQUFtQjtDQUN0Qjs7O0FBRUQ7SUFDSSw4QkFBOEI7SUFDOUIsNkJBQTZCO0NBQ2hDOzs7QUFDRDtJQUNJLCtCQUErQjtDQUNsQzs7O0FBRUQ7SUFDSSxnQkFBZ0I7SUFDaEIsaUJBQWlCO0lBQ2pCLG1CQUFtQjtJQUNuQixjQUFjO0NBQ2pCOzs7QUFFRDtJQUNJLE9BQU87SUFDUCxRQUFRO0lBQ1IsWUFBWTtJQUNaLGFBQWE7SUFDYixnQkFBZ0I7SUFDaEIsWUFBWTtJQUNaLGlCQUFpQjtDQUNwQjs7O0FBRUQ7SUFDSSxrQkFBa0I7SUFDbEIsbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixtQkFBbUI7SUFDbkIsdUJBQXVCO0lBQ3ZCLGFBQWE7SUFDYixrRUFBa0U7SUFDbEUsa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixtQkFBbUI7SUFDbkIsU0FBUztJQUNULFVBQVU7SUFDVixvQ0FBNEI7WUFBNUIsNEJBQTRCO0lBQzVCLG1CQUFtQjtDQUN0Qjs7O0FBRUQ7SUFDSSxXQUFXO0NBQ2Q7OztBQUVEO0lBQ0ksbUJBQW1CO0lBQ25CLFNBQVM7SUFDVCxVQUFVO0lBQ1Ysb0NBQTRCO1lBQTVCLDRCQUE0QjtJQUM1QixtQkFBbUI7Q0FDdEI7OztBQUNEO0lBQ0ksYUFBYTtJQUNiLGtFQUFrRTs7SUFFbEUsa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixhQUFhO0lBQ2IsbUJBQW1CO0NBQ3RCOzs7QUFFRDtJQUNJLCtDQUErQztDQUNsRDs7O0FBQ0Q7SUFDSSxnREFBZ0Q7Q0FDbkQ7OztBQUNEO0lBQ0ksaURBQWlEO0NBQ3BEIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjYm9tYmJhciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICBib3R0b206IDEwMHB4O1xyXG4gICAgbGVmdDogNTAlO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xyXG4gICAgcGFkZGluZzogMjBweDtcclxufSAgIFxyXG5cclxuXHJcbiNib21iYmFyID5pbnB1dCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBkYXJrc2xhdGVncmV5O1xyXG4gICAgY29sb3I6IGdyZWVueWVsbG93O1xyXG4gICAgZm9udC1zaXplOiA0OHB4O1xyXG59XHJcblxyXG5pbnB1dHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLndvcmRsb2cge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICB3aWR0aDogMjAwcHg7XHJcbiAgICB0b3A6IDEwMHB4O1xyXG4gICAgaGVpZ2h0OiA2MDBweDtcclxuICAgIGJvcmRlcjogMnB4IHdoaXRlIHNvbGlkO1xyXG4gICAgb3ZlcmZsb3cteTogYXV0bztcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbn1cclxuXHJcbi53b3JkbG9nID5we1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgdGV4dC1zaGFkb3c6IC0ycHggMCBibGFjaywgMCAycHggYmxhY2ssIDJweCAwIGJsYWNrLCAwIC0ycHggYmxhY2s7XHJcbn1cclxuXHJcbi50aXRsZSB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBsZWZ0OiA1MHB4O1xyXG4gICAgdG9wOiA1MHB4O1xyXG4gICAgZm9udC1zdHlsZTogaXRhbGljO1xyXG4gICAgZm9udC1zaXplOiA3MnB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgdGV4dC1zaGFkb3c6IC0ycHggMCBibGFjaywgMCAycHggYmxhY2ssIDJweCAwIGJsYWNrLCAwIC0ycHggYmxhY2s7XHJcblxyXG59XHJcblxyXG4uc2NvcmV7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5zY29yZSA+cHtcclxuICAgIGZvbnQtc2l6ZTogNzJweDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIHRleHQtc2hhZG93OiAtMnB4IDAgYmxhY2ssIDAgMnB4IGJsYWNrLCAycHggMCBibGFjaywgMCAtMnB4IGJsYWNrO1xyXG59XHJcblxyXG5cclxuLmJvbWJDb250YWluZXIge1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy9ib21iZ3JpZC5wbmdcIik7XHJcbiAgICBtYXgtd2lkdGggOiA2MDBweDtcclxuICAgIGhlaWdodDogNjAwcHg7XHJcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcclxuICAgIG1hcmdpbi1yaWdodDogYXV0bztcclxufVxyXG5cclxuLm1hdC1ncmlkLXRpbGUge1xyXG4gICAgYm9yZGVyLXJpZ2h0OiBibGFjayAycHggc29saWQ7XHJcbiAgICBib3JkZXItbGVmdDogYmxhY2sgMnB4IHNvbGlkO1xyXG59XHJcbi5ncmlkLXRvcCB7XHJcbiAgICBib3JkZXItYm90dG9tOiBibGFjayAycHggc29saWQ7XHJcbn1cclxuXHJcbi5ib21iIHtcclxuICAgIG1pbi13aWR0aDogMTAwJTtcclxuICAgIG1pbi1oZWlnaHQ6IDEwMCU7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG59XHJcblxyXG4uYmFja2dyb3VuZCB7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB6LWluZGV4OiAtMTtcclxuICAgIGJhY2tncm91bmQ6IGdyZXk7XHJcbn1cclxuXHJcbi5ib21idGltZXtcclxuICAgIG1pbi13aWR0aCA6IDEyOHB4O1xyXG4gICAgbWluLWhlaWdodCA6IDEyOHB4O1xyXG4gICAgbWF4LXdpZHRoIDogMTI4cHg7XHJcbiAgICBtYXgtaGVpZ2h0IDogMTI4cHg7XHJcbiAgICAvKiBvdmVyZmxvdzogc2Nyb2xsOyAqL1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgdGV4dC1zaGFkb3c6IC0ycHggMCBibGFjaywgMCAycHggYmxhY2ssIDJweCAwIGJsYWNrLCAwIC0ycHggYmxhY2s7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGZvbnQtc2l6ZTogNzJweDtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMjIlO1xyXG4gICAgbGVmdDogNTAlO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG4uYm9tYnNvb257XHJcbiAgICBjb2xvcjogcmVkO1xyXG59XHJcblxyXG4uYm9tYndvcmR7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDg1JTtcclxuICAgIGxlZnQ6IDUwJTtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDJweDtcclxufVxyXG4uYm9tYndvcmQgPnB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICB0ZXh0LXNoYWRvdzogLTJweCAwIGJsYWNrLCAwIDJweCBibGFjaywgMnB4IDAgYmxhY2ssIDAgLTJweCBibGFjaztcclxuXHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLmJvbWJyZWQge1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy9yZWRidWJibGUucG5nXCIpO1xyXG59XHJcbi5ib21iYmx1ZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL2JsdWVidWJibGUucG5nXCIpO1xyXG59XHJcbi5ib21iZ3JlZW4ge1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy9ncmVlbmJ1YmJsZS5wbmdcIik7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -52,7 +52,7 @@ module.exports = "#bombbar {\r\n    position: fixed;\r\n    bottom: 100px;\r\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bombContainer\">\r\n    <mat-grid-list cols=\"3\" rowHeight=\"1:1\">\r\n        <mat-grid-tile *ngFor=\"let bomb of bombs; let i=index\" [ngClass]=\"{'top-grid': i < 3}\">\r\n            <ng-container *ngIf=\"bomb\">\r\n\r\n                <div class=\"bomb\"\r\n                    [ngClass]=\"{'bombred': bomb.color == 'red', 'bombblue': bomb.color == 'blue', 'bombgreen': bomb.color == 'green' }\">\r\n                    <div class=\"bombtime\"> {{ bomb.time }} <br>\r\n                        <div *ngIf=\"i > 2\" class=\"bombword\">\r\n                            <p> {{bomb.word}} </p>\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n            </ng-container>\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>\r\n\r\n<div class=\"wordlog\">\r\n    <p *ngFor=\"let word of log\">\r\n        {{word.word}} + {{word.score}}\r\n    </p>\r\n\r\n</div>\r\n\r\n<div id=\"bombbar\">\r\n    <h2> {{score}} </h2>\r\n    <input matInput name=\"typingpad\" type=\"text\" [(ngModel)]=\"typingpad\" (ngModelChange)=\"typingUpdate()\" ngModel>\r\n</div>"
+module.exports = "<div class=\"bombContainer\">\r\n    <mat-grid-list cols=\"3\" rowHeight=\"1:1\">\r\n        <mat-grid-tile *ngFor=\"let bomb of bombs; let i=index\" [ngClass]=\"{'top-grid': i < 3}\">\r\n            <ng-container *ngIf=\"bomb\">\r\n\r\n                <div class=\"bomb animated jello\"\r\n                    [ngClass]=\"{'bombred': bomb.color == 'red', 'bombblue': bomb.color == 'blue', 'bombgreen': bomb.color == 'green' }\">\r\n                    <div class=\"bombtime\" [ngClass]=\"{'bombsoon': bomb.time < 6}\">\r\n                        {{ bomb.time }}\r\n                    </div>\r\n                    <div *ngIf=\"i > 2\" class=\"bombword\">\r\n                        <p> {{bomb.word}} </p>\r\n                    </div>\r\n\r\n                </div>\r\n            </ng-container>\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>\r\n\r\n<div class=\"background\">\r\n</div>\r\n<div class=\"wordlog\">\r\n    <p *ngFor=\"let word of log\">\r\n        {{word.word}} + {{word.score}}\r\n    </p>\r\n\r\n</div>\r\n<div class=\"title\">\r\n    Type-Rescue\r\n    <button mat-button (click)=\"restart()\"> Restart </button>\r\n</div>\r\n\r\n\r\n<div id=\"bombbar\">\r\n        <div class=\"score\">\r\n            <p>\r\n                {{score}}\r\n            </p>\r\n        </div>\r\n    <input matInput name=\"typingpad\" type=\"text\" [(ngModel)]=\"typingpad\" (ngModelChange)=\"typingUpdate()\" ngModel>\r\n</div>"
 
 /***/ }),
 
@@ -69,17 +69,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
 
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(matSnackBar) {
+        this.matSnackBar = matSnackBar;
         this.dictionary = ["DISFIGUREMENT", "BLISSFULLY", "PRAYER", "ARK", "PENGUIN", "CADAVER", "YOUNG", "HARPOON", "DRUM", "HARLOT", "DINNER", "CHEMICAL", "FORK", "EXAMINER", "PERILOUS", "CODDLE", "PUBLIC", "DIZZY", "HOBBY", "SONG", "GUM", "GOODBYE", "ACCESSORIES", "ETHICAL", "BACKYARD", "JUNKYARD", "SUNRISE", "CAPTAIN", "EXPLICIT", "HAYWIRE", "BLADE", "EAR", "GHETTO", "ELASTIC", "ALPHABET", "BLOWGUN", "SMUT", "PLASMA", "DOBERMAN", "CODDLE", "VISION", "DECADENCE", "WASP", "EMOTION", "CASKET", "HANGMAN", "DECAPITATION", "HERB", "BIZARRE", "VIBRATION", "EMPTY", "FERTILITY", "CHAMBER", "BRILLIANT", "FIERY", "BAKE", "ADULT", "FINANCIAL", "FORNICATOR", "ARSONIST", "ABSORB", "CRIMSON", "LUCKY", "POSSESSION", "SHARK", "DISK", "FILTER", "MOLTEN", "AUTOPILOT", "CATTLE", "FURRY", "EXPLICIT", "CONDEMNED", "HORRIFIC", "HOTHEAD", "HOOPLA", "PLAYTIME", "BLEEDER", "COAL", "FIEND", "CHISEL", "FOUL", "FLIP", "EXPLICIT", "FEEL", "FLUCTUATION", "MURDERER", "FOG", "GRIM", "POUND", "WINTER", "PROPELLER", "FLUCTUATION", "DIABOLATRY", "DEGENERATE", "JUICE", "BLOSSOM", "FREEDOM", "GLUTTON", "DOME", "TASTE", "VISITOR", "FIGHT", "KINGDOM", "IMPURE", "CHILDISH", "ART", "ADHESIVE", "TRAUMA", "MASTER", "GIANT", "PRANK", "BIGGEST", "CONTAGIOUS", "DISCIPLINE", "BLUBBER", "COMFORTABLE", "ACROBATIC", "OPPOSITION", "CRABS", "BALLET", "HIT", "BLEAK", "AGAINST", "CLOCK", "WAKE", "VICTORY", "CELLBLOCK", "DECADENT", "DIAMOND", "SALT", "BUCKET", "ACTOR", "ACOUSTIC", "HUGE", "HARMONY", "GEOMETRY", "YOUNG", "CONFUSED", "BEGGING", "BARNYARD", "AIM", "GREASY", "LOGIC", "PURPOSE", "INDECENT", "FRECKLED", "DITCH", "PUZZLE", "BUFFET", "SHOCK", "BLESSING", "FILTER", "RUBY", "BARBER", "BLINKS", "LIMITLESS", "AMBER", "FLUTTER", "DOWNFALL", "AVAILABLE", "CATHEDRAL", "BUTCHER", "HONEYMOON", "CINNAMON", "MARGINAL", "SCAR", "HABIT", "AIRTIGHT", "DIRECTOR", "THINK", "QUICK", "HEARTBEAT", "TANK", "ANATOMY", "CHRONOLOGICAL", "GENERATION", "ALPHABETIC", "MOIST", "BRUTE", "BRASS", "GANGLAND", "ALSO", "SOUP", "AGENDA", "AMERICANA", "CREATION", "FINCH", "COMPULSION", "ABANDON", "BEARD", "FAST", "STEEL", "BACKWARD", "FIRE", "CLUB", "JUSTICE", "BEATEN", "JUNIOR", "HEART", "GADGET", "ARTIFICIAL", "POCKET", "FAITH", "COMPLETE", "HABIT", "TRAUMA", "SERENITY", "ALLIGATOR", "CONCEPTUAL", "BIOLOGICAL", "CREW", "HUNCHBACK", "ASTOUNDING", "CORROSIVE", "HIDE", "GANGLAND", "COMPOUND", "ATTEMPT", "CHARM", "REBEL", "HELMET", "BED", "GLASS", "LICKER", "HOP", "FORTUNE", "CONSPIRACY", "BANK", "BIONIC", "BRIBERY", "NARCOTIC", "TREASURE", "NINETEEN", "COMPLICATED", "DREAM", "AMBITION", "ENLARGE", "LUST", "ARK", "BUMBLE", "DAREDEVIL", "PROCESS", "PARALYSIS", "KIND", "BETWEEN", "ANKH", "LOCUST", "CONSUMPTION", "GINGER", "HACK", "BAKE", "BARBERSHOP", "BINGE", "DANCER", "IMAGINARY"];
         this.title = 'repo';
+        this.oldtypingpad = "";
         this.score = 0;
         this.adjacents = [[], [], [], [4, 6], [3, 5, 7], [4, 8], [3, 7], [4, 6, 8], [5, 7]];
         this.lock = 0;
     }
+    ;
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.log = [];
@@ -87,9 +92,9 @@ var AppComponent = /** @class */ (function () {
         for (var index = 0; index < 9; index++) {
             this.bombs.push(this.generateBomb());
         }
-        var bombTicker = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(1000);
+        this.bombTicker = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(1000);
         // Subscribe to begin publishing values
-        bombTicker.subscribe(function (n) {
+        this.sub = this.bombTicker.subscribe(function (n) {
             return _this.tickDown();
         });
     };
@@ -97,8 +102,27 @@ var AppComponent = /** @class */ (function () {
         for (var index = 3; index < this.bombs.length; index++) {
             if (this.bombs[index]) {
                 this.bombs[index].time -= 1;
+                if (this.bombs[index].time == 0) {
+                    this.stop();
+                    return;
+                }
             }
         }
+    };
+    AppComponent.prototype.stop = function () {
+        this.matSnackBar.open('Finish score: ' + this.score, 'close', { duration: 5000 });
+        this.sub.unsubscribe();
+    };
+    AppComponent.prototype.restart = function () {
+        var _this = this;
+        this.score = 0;
+        this.log = [];
+        for (var index = 0; index < 9; index++) {
+            this.bombs[index] = this.generateBomb();
+        }
+        this.sub = this.bombTicker.subscribe(function (n) {
+            return _this.tickDown();
+        });
     };
     AppComponent.prototype.moveDown = function () {
         var change = false;
@@ -130,6 +154,9 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.typingUpdate = function () {
         while (this.lock == 1)
             1;
+        if (this.oldtypingpad.length > this.typingpad.length) {
+            this.typingpad = "";
+        }
         this.lock = 1;
         for (var index = 3; index < this.bombs.length; index++) {
             if (this.bombs[index]) {
@@ -139,6 +166,7 @@ var AppComponent = /** @class */ (function () {
                 }
             }
         }
+        this.oldtypingpad = this.typingpad;
         this.lock = 0;
     };
     AppComponent.prototype.addToLog = function (word) {
@@ -147,10 +175,10 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.blowUp = function (index) {
         var word = this.bombs[index].word;
         var color = this.bombs[index].color;
-        this.bombs[index] = null;
         var adjacents = this.adjacents[index];
-        var scoreAdded = 0;
+        var scoreAdded = this.bombs[index].time;
         var timeAdded = 0;
+        this.bombs[index] = null;
         for (var j = 0; j < adjacents.length; j++) {
             if (this.bombs[adjacents[j]] != null && this.bombs[adjacents[j]].color == color) {
                 scoreAdded += 10 + this.bombs[adjacents[j]].time;
@@ -175,7 +203,8 @@ var AppComponent = /** @class */ (function () {
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css"), __webpack_require__(/*! ./animate.css */ "./src/app/animate.css")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -201,7 +230,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/grid-list */ "./node_modules/@angular/material/esm5/grid-list.es5.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/snack-bar */ "./node_modules/@angular/material/esm5/snack-bar.es5.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+
 
 
 
@@ -216,7 +247,7 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -227,10 +258,11 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButtonModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCheckboxModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatFormFieldModule"],
-                _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_6__["MatGridListModule"]
+                _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_6__["MatGridListModule"],
+                _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_7__["MatSnackBarModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;

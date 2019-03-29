@@ -4,7 +4,7 @@ import { interval } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', './animate.css']
 })
 
 export class AppComponent {
@@ -12,7 +12,12 @@ export class AppComponent {
   title = 'repo';
   typingpad: string;
   bombs: bomb[];
+  score = 0;
+  adjacents = [[], [], [], [4, 6], [3, 5, 7], [4, 8], [3, 7], [4, 6, 8], [5, 7]];
+  lock = 0;
+  log: logWord[];
   ngOnInit(): void {
+    this.log = [];
     this.bombs = [];
     for (let index = 0; index < 9; index++) {
       this.bombs.push(this.generateBomb());
@@ -26,7 +31,6 @@ export class AppComponent {
 
 
   tickDown(): void {
-    console.log(this.bombs);
     for (let index = 3; index < this.bombs.length; index++) {
       if (this.bombs[index]) {
         this.bombs[index].time -= 1;
@@ -38,18 +42,19 @@ export class AppComponent {
     var change = false;
     for (let index = 3; index < this.bombs.length; index++) {
       if (this.bombs[index] == null) {
-        change = true;
         this.bombs[index] = this.bombs[index - 3];
         this.bombs[index - 3] = null;
+        change = true;
       }
     }
 
-    for (let index = 0; index < 3; index++) {
+    for (let index = 0; index < 9; index++) {
       if (this.bombs[index] == null) {
         this.bombs[index] = this.generateBomb();
         change = true;
       }
     }
+    console.log(this.bombs, change);
     if (change) this.moveDown();
   }
 
@@ -63,26 +68,55 @@ export class AppComponent {
   }
 
   typingUpdate() {
+    while (this.lock == 1) 1;
+    this.lock = 1;
     for (let index = 3; index < this.bombs.length; index++) {
       if (this.bombs[index]) {
         if (this.bombs[index].word.toUpperCase() == this.typingpad.toUpperCase()) {
-          this.blowUp(index);
           this.typingpad = "";
+          this.blowUp(index);
         }
       }
     }
+    this.lock = 0;
+  }
 
+  addToLog(word: logWord) {
+    this.log = [word].concat(this.log);
   }
 
   blowUp(index: number) {
+    var word = this.bombs[index].word;
+    var color = this.bombs[index].color;
     this.bombs[index] = null;
-    for (let j = 0; j < this.adjacents[index].length; j++) {
-      this.bombs[this.adjacents[index][j]] = null;
-      
+    var adjacents = this.adjacents[index];
+    var scoreAdded = 0;
+    var timeAdded = 0;
+    for (let j = 0; j < adjacents.length; j++) {
+      if (this.bombs[adjacents[j]] != null && this.bombs[adjacents[j]].color == color) {
+        scoreAdded += 10 + this.bombs[adjacents[j]].time;
+        this.bombs[this.adjacents[index][j]] = null;
+        adjacents = adjacents.concat(this.adjacents[this.adjacents[index][j]]);
+        timeAdded += 4;
+      }
     }
+    for (let j = 0; j < 9; j++) {
+      if (this.bombs[j])
+        this.bombs[j].time += timeAdded;
+    }
+    this.score += scoreAdded;
     this.moveDown();
+
+    this.addToLog({
+      word: word,
+      score: scoreAdded
+    })
   }
-  adjacents = [[], [], [], [4, 6], [3, 5, 7], [4, 8], [3, 7], [4, 6, 8], [5, 7]];
+}
+
+interface logWord {
+  word: string,
+  score: number,
 }
 
 interface bomb {

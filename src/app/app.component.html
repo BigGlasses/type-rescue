@@ -1,19 +1,30 @@
 <div class="bombContainer">
     <mat-grid-list cols="3" rowHeight="1:1">
         <mat-grid-tile *ngFor="let bomb of bombs; let i=index" [ngClass]="{'top-grid': i < 3}">
-            <div class="bomb" [ngClass]="{'bombred': bomb.color == 'red', 'bombblue': bomb.color == 'blue', 'bombgreen': bomb.color == 'green' }">
-                <div class="bombtime"> {{ bomb.time }} <br>
-                     <div *ngIf="i > 2" class="bombword">
-                        <p> {{bomb.word}} </p>
-                    </div>
-                </div>
+            <ng-container *ngIf="bomb">
 
-            </div>
+                <div class="bomb"
+                    [ngClass]="{'bombred': bomb.color == 'red', 'bombblue': bomb.color == 'blue', 'bombgreen': bomb.color == 'green' }">
+                    <div class="bombtime"> {{ bomb.time }} <br>
+                        <div *ngIf="i > 2" class="bombword">
+                            <p> {{bomb.word}} </p>
+                        </div>
+                    </div>
+
+                </div>
+            </ng-container>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
 
+<div class="wordlog">
+    <p *ngFor="let word of log">
+        {{word.word}} + {{word.score}}
+    </p>
+
+</div>
 
 <div id="bombbar">
+    <h2> {{score}} </h2>
     <input matInput name="typingpad" type="text" [(ngModel)]="typingpad" (ngModelChange)="typingUpdate()" ngModel>
 </div>

@@ -56,7 +56,7 @@ input{
 
 
 .bombContainer {
-    background-image: url("/assets/bombgrid.png");
+    background-image: url("../assets/bombgrid.png");
     max-width : 600px;
     height: 600px;
     margin-left: auto;
@@ -127,11 +127,11 @@ input{
 }
 
 .bombred {
-    background-image: url("/assets/redbubble.png");
+    background-image: url("../assets/redbubble.png");
 }
 .bombblue {
-    background-image: url("/assets/bluebubble.png");
+    background-image: url("../assets/bluebubble.png");
 }
 .bombgreen {
-    background-image: url("/assets/greenbubble.png");
+    background-image: url("../assets/greenbubble.png");
 }

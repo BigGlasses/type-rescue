@@ -21,7 +21,8 @@ export class AppComponent {
   lock = 0;
   log: logWord[];
   bombTicker: Observable<number>;
-  sub : Subscription;
+  bombGuiFaller: Observable<number>;
+  game_active: boolean = false;
 
   constructor(private matSnackBar: MatSnackBar) { };
 
@@ -32,16 +33,21 @@ export class AppComponent {
       this.bombs.push(this.generateBomb());
     }
     this.bombTicker = interval(1000);
-    // Subscribe to begin publishing values
-    this.sub = this.bombTicker.subscribe(n =>
+    this.bombGuiFaller = interval(10);
+    // Subscribe to begin ticking bombs
+    this.bombTicker.subscribe(n =>
       this.tickDown());
+    this.bombGuiFaller.subscribe(n =>
+      this.guiFall());
   }
 
 
 
   tickDown(): void {
+    if (!this.game_active) return;
     for (let index = 3; index < this.bombs.length; index++) {
       if (this.bombs[index]) {
+        if (this.bombs[index].newtime >= 0) this.bombs[index].newtime -= 0.5;
         this.bombs[index].time -= 1;
         if (this.bombs[index].time == 0) {
           this.stop();
@@ -49,6 +55,21 @@ export class AppComponent {
         }
       }
     }
+  }
+
+  guiFall(): void {
+    if (!this.game_active) return;
+    for (let index = 3; index < this.bombs.length; index++) {
+      if (this.bombs[index]) {
+        if (this.bombs[index].offsetY >= 0) this.bombs[index].offsetY -= 5;
+      }
+    }
+    for (let index = 0; index < this.bombs.length; index++) {
+      if (this.bombs[index]) {
+        if (this.bombs[index].newtime >= 0) this.bombs[index].newtime -= 0.05;
+      }
+    }
+
   }
 
   stop() {

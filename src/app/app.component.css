@@ -1,6 +1,6 @@
 #bombbar {
     position: fixed;
-    bottom: 100px;
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
     padding: 20px;
@@ -9,8 +9,8 @@
 
 #bombbar >input {
     background: transparent;
-    border: 2px solid black;
-    border-radius: 5px;
+    border: none;
+    border-bottom: 2px solid black;
     color: black;
     font-size: 48px;
     font-family: 'Staatliches';
@@ -40,7 +40,7 @@ input{
 }
 
 .wordlog >p{
-    animation: fadein 0.2s linear 0s 1;
+    animation: bounceIn 1s linear 0s 1;
     text-align: center;
     font-size: 48px;
     color:white;

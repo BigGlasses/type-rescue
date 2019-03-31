@@ -13,8 +13,8 @@
                     <div class="bomb animated "
                         [ngClass]="{'bombred': bomb.color == 'red', 'bombblue': bomb.color == 'blue', 'bombgreen': bomb.color == 'green' }"
                         [ngStyle]="{'top': '-' + bomb.offsetY + 'px', 'opacity' : 1 - bomb.newtime}">
-                        <div class="bombtime" [ngClass]="{'bombsoon': bomb.time < 6}">
-                            {{ bomb.time }}
+                        <div class="bombtime" [ngClass]="{'bombsoon': bomb.time < 6 * tickRateDisplay}">
+                            {{ bomb.timedisplay}}
                         </div>
                         <div *ngIf="i > 2" class="bombword">
                                 <div class="bombwordprefix"> <p> {{bomb.prefix}} </p> </div> <div class="bombwordsuffix"> <p> {{bomb.suffix}} </p> </div>
@@ -40,6 +40,17 @@
             </p>
         </div>
         <input matInput name="typingpad" type="text" [(ngModel)]="typingpad" (ngModelChange)="typingUpdate()" ngModel autofocus>
+    </div>
+
+    <div style="color: white; position: fixed; left: 0; top:50%; width: 20%; padding: 20px;">
+            <h3> Rules </h3>
+            <p> 1. Bombs slowly tick down. When they hit a time of zero you lose. </p>
+            <p> 2. Type the words under the bombs into the defuser to defuse the bombs. </p>
+            <p> 3. Defusing a bomb will also diffuse adjacent bombs of the same color. </p>
+            <p> 4. Defusing multiple bombs at once improves score and gives more defuse on remaining bombs. </p>
+            <p> 5. Bombs will slowly tick faster as the game continues. </p>
+
+            <h1> BOMB SPEED: {{tickRateDisplay}} X</h1>
     </div>
 
     <div *ngIf="gameover" id="gameover">Game Over!<p>Scored {{score}} points</p></div>

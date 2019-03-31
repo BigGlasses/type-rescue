@@ -16,6 +16,8 @@ export class AppComponent {
 
   bombs: bomb[];
   score = 0;
+  tickRate = 0.1;
+  tickRateDisplay = 0.1;
   gameover = false;
   adjacents = [[], [], [], [4, 6], [3, 5, 7], [4, 8], [3, 7, 9], [4, 6, 8, 10], [5, 7, 11], [6, 10], [9, 7, 11], [10, 8]];
   lock = 0;
@@ -32,7 +34,7 @@ export class AppComponent {
     for (let index = 0; index < 12; index++) {
       this.bombs.push(this.generateBomb());
     }
-    this.bombTicker = interval(1000);
+    this.bombTicker = interval(100);
     this.bombGuiFaller = interval(10);
     // Subscribe to begin ticking bombs
     this.bombTicker.subscribe(n =>
@@ -48,13 +50,17 @@ export class AppComponent {
     for (let index = 3; index < this.bombs.length; index++) {
       if (this.bombs[index]) {
         if (this.bombs[index].newtime >= 0) this.bombs[index].newtime -= 0.5;
-        this.bombs[index].time -= 1;
-        if (this.bombs[index].time == 0) {
+        this.bombs[index].time -= this.tickRate;
+        this.bombs[index].timedisplay = Math.round(this.bombs[index].time);
+
+        if (this.bombs[index].time <= 0) {
           this.stop();
           return;
         }
       }
     }
+    this.tickRate += 0.0002;
+    this.tickRateDisplay = Math.round(this.tickRate / 0.1 * 10) / 10.0;
   }
 
   guiFall(): void {
@@ -78,6 +84,7 @@ export class AppComponent {
   }
 
   restart() {
+    this.tickRate = 0.1;
     this.typingpad = "";
     this.score = 0;
     this.log = [];
@@ -110,18 +117,18 @@ export class AppComponent {
 
   generateBomb(): bomb {
     var words = this.dictionary;
-    for (let index = 0; index < this.bombs.length; index++) { 
-      if (this.bombs[index] && words.includes(this.bombs[index].word))
-      {
+    for (let index = 0; index < this.bombs.length; index++) {
+      if (this.bombs[index] && words.includes(this.bombs[index].word)) {
         words.splice(words.indexOf(this.bombs[index].word), 1);
       }
     }
-
+    var time = 10 * this.tickRateDisplay + Math.floor(10 * Math.random()) ;
     var newBomb: bomb = {
       word: words[Math.floor(Math.random() * (words.length - 1))],
       prefix: "",
+      timedisplay: time,
       suffix: "",
-      time: 10 + Math.floor(10 * Math.random()),
+      time: time,
       color: ["red", "blue", "green"][Math.floor(2.9999 * Math.random())],
       newtime: 2,
       offsetY: 0
@@ -139,7 +146,7 @@ export class AppComponent {
     var noPrefix = true;
     this.lock = 1;
     for (let index = 3; index < this.bombs.length; index++) {
-      if (this.bombs[index].word.startsWith(this.typingpad.toUpperCase() )){
+      if (this.bombs[index].word.startsWith(this.typingpad.toUpperCase())) {
         this.bombs[index].prefix = this.typingpad;
         this.bombs[index].suffix = this.bombs[index].word.substr(this.typingpad.length);
         noPrefix = false;
@@ -160,6 +167,7 @@ export class AppComponent {
 
     this.oldtypingpad = this.typingpad;
     this.lock = 0;
+    console.log(noPrefix);
     if (noPrefix) {
       this.typingpad = "";
     }
@@ -173,13 +181,13 @@ export class AppComponent {
     var word = this.bombs[index].word;
     var color = this.bombs[index].color;
     var adjacents = this.adjacents[index];
-    var scoreAdded = this.bombs[index].time;
+    var scoreAdded = Math.round(this.bombs[index].time);
     var timeAdded = 0;
     this.bombs[index] = null;
     for (let j = 0; j < adjacents.length; j++) {
-      
+
       if (this.bombs[adjacents[j]] != null && this.bombs[adjacents[j]].color == color) {
-        scoreAdded += 10 + this.bombs[adjacents[j]].time;
+        scoreAdded += 10 + Math.round(this.bombs[adjacents[j]].time);
         this.bombs[adjacents[j]] = null;
         adjacents = adjacents.concat(this.adjacents[adjacents[j]]);
         timeAdded += 4;
@@ -206,6 +214,7 @@ interface logWord {
 
 interface bomb {
   newtime: number,
+  timedisplay: number,
   word: string,
   prefix: string,
   suffix: string,

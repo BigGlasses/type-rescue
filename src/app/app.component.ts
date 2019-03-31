@@ -17,7 +17,7 @@ export class AppComponent {
   bombs: bomb[];
   score = 0;
   gameover = false;
-  adjacents = [[], [], [], [4, 6], [3, 5, 7], [4, 8], [3, 7], [4, 6, 8], [5, 7]];
+  adjacents = [[], [], [], [4, 6], [3, 5, 7], [4, 8], [3, 7, 9], [4, 6, 8, 10], [5, 7, 11], [6, 10], [9, 7, 11], [10, 8]];
   lock = 0;
   log: logWord[];
   bombTicker: Observable<number>;
@@ -28,7 +28,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.log = [];
     this.bombs = [];
-    for (let index = 0; index < 9; index++) {
+    for (let index = 0; index < 12; index++) {
       this.bombs.push(this.generateBomb());
     }
     this.bombTicker = interval(1000);
@@ -60,7 +60,7 @@ export class AppComponent {
   restart() {
     this.score = 0;
     this.log = [];
-    for (let index = 0; index < 9; index++) {
+    for (let index = 0; index < 12; index++) {
       this.bombs[index] = this.generateBomb();
     }
     this.sub = this.bombTicker.subscribe(n =>
@@ -78,7 +78,6 @@ export class AppComponent {
       }
     }
 
-    for (let index = 0; index < 9; index++) {
     for (let index = 0; index < 3; index++) {
       if (this.bombs[index] == null) {
         this.bombs[index] = this.generateBomb();

@@ -2,7 +2,7 @@
     <div class="title-container">
         <div class="title">
             Type-Rescue
-            <button mat-button (click)="restart()"> Restart </button>
+            <button mat-button *ngIf="!game_active" (click)="restart()"> Start </button>
         </div>
     </div>
     <div class="bombContainer">

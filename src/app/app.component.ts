@@ -177,10 +177,11 @@ export class AppComponent {
     var timeAdded = 0;
     this.bombs[index] = null;
     for (let j = 0; j < adjacents.length; j++) {
+      
       if (this.bombs[adjacents[j]] != null && this.bombs[adjacents[j]].color == color) {
         scoreAdded += 10 + this.bombs[adjacents[j]].time;
-        this.bombs[this.adjacents[index][j]] = null;
-        adjacents = adjacents.concat(this.adjacents[this.adjacents[index][j]]);
+        this.bombs[adjacents[j]] = null;
+        adjacents = adjacents.concat(this.adjacents[adjacents[j]]);
         timeAdded += 4;
       }
     }

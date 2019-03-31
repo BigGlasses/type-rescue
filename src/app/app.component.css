@@ -10,7 +10,7 @@
 #bombbar >input {
     background: transparent;
     border: 2px solid black;
-    border-radius: 10px;
+    border-radius: 5px;
     color: black;
     font-size: 48px;
     font-family: 'Staatliches';
@@ -27,17 +27,25 @@ input{
 .wordlog {
     position: fixed;
     right: 0;
-    width: 200px;
-    top: 100px;
-    height: 600px;
-    border: 2px white solid;
+    width: calc(50% - 300px);
+    top: 0;
+    height: 100%;
     overflow-y: auto;
     padding: 10px;
 }
 
+@keyframes fadein {
+	0% { opacity: 0; } 
+	100% { opacity: 1; }
+}
+
 .wordlog >p{
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    animation: fadein 0.2s linear 0s 1;
+    text-align: center;
+    font-size: 48px;
+    color:white;
+    /* text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white; */
+    margin: 0;
 }
 
 .title {
@@ -46,8 +54,8 @@ input{
     top: 50px;
     font-style: italic;
     font-size: 72px;
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: black;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
     display: flex;
     flex-direction: column;
 }
@@ -55,8 +63,9 @@ input{
 button {
     font-family: 'Staatliches';
     font-size: 20px;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
+    border-radius: 3px;
 }
 
 .score{
@@ -65,19 +74,20 @@ button {
 
 .score >p{
     font-size: 72px;
-    color: white;
-    margin: 25px;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: black;
+    margin: 10px;
+    /* text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black; */
 }
 
 
 .bombContainer {
     max-width : 600px;
-    height: 600px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
     padding-bottom: 10px;
+    box-shadow: inset 0 0 30px black;
 }
 
 .bomb {
@@ -89,6 +99,8 @@ button {
 
 .game-container {
     font-family: 'Staatliches';
+    height: 100%;
+    width: 100%;
     /* display: flex;
     flex-direction: column; */
 }
@@ -99,8 +111,9 @@ button {
     max-width : 128px;
     max-height : 128px;
     /* overflow: scroll; */
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: black;
+    /* color: white; */
+    /* text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black; */
     font-weight: bold;
     font-size: 72px;
     position: absolute;
@@ -115,7 +128,7 @@ button {
     border: 8px solid white;
 }
 
-.bombtime:before {
+/* .bombtime:before {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -130,11 +143,11 @@ button {
     content: '';
     border: 2px solid black;
     border-radius: 50%;
-}
+} */
 
 @keyframes urgent {
 	0% { color: white; } 
-	50% { color: rgb(252, 67, 21); } 
+	50% { color: black; } 
 	100% { color: white; }
 }
 
@@ -150,12 +163,11 @@ button {
     transform: translateX(-50%);
     border-radius: 2px;
 }
-.bombword >p{
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-
+.bombword >p {
+    color: black;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 26px;
     margin: auto;
     text-align: center;
 }

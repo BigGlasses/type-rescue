@@ -8,9 +8,16 @@
 
 
 #bombbar >input {
-    background-color: darkslategrey;
-    color: greenyellow;
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
     font-size: 48px;
+    font-family: 'Staatliches';
+}
+
+#bombbar >input:focus {
+    outline: none;
 }
 
 input{
@@ -37,12 +44,19 @@ input{
     position: absolute;
     left: 50px;
     top: 50px;
-    font-family: 'Staatliches';
     font-style: italic;
     font-size: 72px;
     color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    display: flex;
+    flex-direction: column;
+}
 
+button {
+    font-family: 'Staatliches';
+    font-size: 20px;
+    color: white;
+    background-color: black;
 }
 
 .score{
@@ -52,24 +66,18 @@ input{
 .score >p{
     font-size: 72px;
     color: white;
+    margin: 25px;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 
 .bombContainer {
-    background-image: url("../assets/bombgrid.png");
     max-width : 600px;
     height: 600px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.mat-grid-tile {
-    border-right: black 2px solid;
-    border-left: black 2px solid;
-}
-.grid-top {
-    border-bottom: black 2px solid;
+    background-color: white;
+    padding-bottom: 10px;
 }
 
 .bomb {
@@ -80,6 +88,7 @@ input{
 }
 
 .game-container {
+    font-family: 'Staatliches';
     /* display: flex;
     flex-direction: column; */
 }
@@ -99,10 +108,39 @@ input{
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 8px solid white;
+}
+
+.bombtime:before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border: 2px solid black;
+    border-radius: 50%;
+}
+.bombtime:after {
+    position: absolute;
+    width: 111%;
+    height: 111%;
+    content: '';
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+@keyframes urgent {
+	0% { color: white; } 
+	50% { color: rgb(252, 67, 21); } 
+	100% { color: white; }
 }
 
 .bombsoon{
-    color: red;
+    animation: urgent linear 0.5s infinite;
+    -webkit-animation: urgent linear 0.5s infinite;
 }
 
 .bombword{
@@ -122,12 +160,12 @@ input{
     text-align: center;
 }
 
-.bombred {
-    background-image: url("../assets/redbubble.png");
+.bombred .bombtime {
+    border-color: rgb(0, 255, 0);
 }
-.bombblue {
-    background-image: url("../assets/bluebubble.png");
+.bombblue .bombtime {
+    border-color: rgb(0, 162, 255);
 }
-.bombgreen {
-    background-image: url("../assets/greenbubble.png");
+.bombgreen .bombtime {
+    border-color: rgb(255, 68, 68);
 }

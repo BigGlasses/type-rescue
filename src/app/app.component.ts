@@ -79,6 +79,7 @@ export class AppComponent {
     }
 
     for (let index = 0; index < 9; index++) {
+    for (let index = 0; index < 3; index++) {
       if (this.bombs[index] == null) {
         this.bombs[index] = this.generateBomb();
         change = true;
@@ -134,7 +135,7 @@ export class AppComponent {
         timeAdded += 4;
       }
     }
-    for (let j = 0; j < 9; j++) {
+    for (let j = 0; j < 12; j++) {
       if (this.bombs[j])
         this.bombs[j].time += timeAdded;
     }

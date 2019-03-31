@@ -10,8 +10,9 @@
             <mat-grid-tile *ngFor="let bomb of bombs; let i=index" [ngClass]="{'top-grid': i < 3}">
                 <ng-container *ngIf="bomb">
 
-                    <div class="bomb animated jello"
-                        [ngClass]="{'bombred': bomb.color == 'red', 'bombblue': bomb.color == 'blue', 'bombgreen': bomb.color == 'green' }">
+                    <div class="bomb animated "
+                        [ngClass]="{'bombred': bomb.color == 'red', 'bombblue': bomb.color == 'blue', 'bombgreen': bomb.color == 'green' }"
+                        [ngStyle]="{'top': '-' + bomb.offsetY + 'px', 'opacity' : 1 - bomb.newtime}">
                         <div class="bombtime" [ngClass]="{'bombsoon': bomb.time < 6}">
                             {{ bomb.time }}
                         </div>

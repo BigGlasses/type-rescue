@@ -154,7 +154,11 @@ interface logWord {
 }
 
 interface bomb {
+  newtime: number,
   word: string,
+  prefix: string,
+  suffix: string,
   time: number,
-  color: string
+  color: string,
+  offsetY: number
 }

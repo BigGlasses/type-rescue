@@ -73,19 +73,18 @@ export class AppComponent {
   }
 
   stop() {
-    // this.matSnackBar.open('Finish score: ' + this.score, 'close', { duration: 5000 });
-    this.sub.unsubscribe();
     this.gameover = true;
+    this.game_active = false;
   }
 
   restart() {
+    this.typingpad = "";
     this.score = 0;
     this.log = [];
     for (let index = 0; index < 12; index++) {
       this.bombs[index] = this.generateBomb();
     }
-    this.sub = this.bombTicker.subscribe(n =>
-      this.tickDown());
+    this.game_active = true;
     this.gameover = false;
   }
 
@@ -94,6 +93,7 @@ export class AppComponent {
     for (let index = 3; index < this.bombs.length; index++) {
       if (this.bombs[index] == null) {
         this.bombs[index] = this.bombs[index - 3];
+        this.bombs[index].offsetY += 200;
         this.bombs[index - 3] = null;
         change = true;
       }
@@ -105,7 +105,6 @@ export class AppComponent {
         change = true;
       }
     }
-    console.log(this.bombs, change);
     if (change) this.moveDown();
   }
 
@@ -132,6 +131,7 @@ export class AppComponent {
   }
 
   typingUpdate() {
+    if (!this.game_active) return;
     while (this.lock == 1) 1;
     if (this.oldtypingpad.length > this.typingpad.length) {
       this.typingpad = "";

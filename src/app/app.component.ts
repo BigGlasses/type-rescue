@@ -89,8 +89,16 @@ export class AppComponent {
   }
 
   generateBomb(): bomb {
+    var words = this.dictionary;
+    for (let index = 0; index < this.bombs.length; index++) { 
+      if (this.bombs[index] && words.includes(this.bombs[index].word))
+      {
+        words.splice(words.indexOf(this.bombs[index].word), 1);
+      }
+    }
+
     var newBomb: bomb = {
-      word: this.dictionary[Math.floor(Math.random() * 255)],
+      word: words[Math.floor(Math.random() * (words.length - 1))],
       time: 10 + Math.floor(10 * Math.random()),
       color: ["red", "blue", "green"][Math.floor(2.9999 * Math.random())],
     }

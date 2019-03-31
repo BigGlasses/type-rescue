@@ -99,9 +99,14 @@ export class AppComponent {
 
     var newBomb: bomb = {
       word: words[Math.floor(Math.random() * (words.length - 1))],
+      prefix: "",
+      suffix: "",
       time: 10 + Math.floor(10 * Math.random()),
       color: ["red", "blue", "green"][Math.floor(2.9999 * Math.random())],
+      newtime: 2,
+      offsetY: 0
     }
+    newBomb.suffix = newBomb.word;
     return newBomb;
   }
 
@@ -110,8 +115,19 @@ export class AppComponent {
     if (this.oldtypingpad.length > this.typingpad.length) {
       this.typingpad = "";
     }
+    var noPrefix = true;
     this.lock = 1;
     for (let index = 3; index < this.bombs.length; index++) {
+      if (this.bombs[index].word.startsWith(this.typingpad.toUpperCase() )){
+        this.bombs[index].prefix = this.typingpad;
+        this.bombs[index].suffix = this.bombs[index].word.substr(this.typingpad.length);
+        noPrefix = false;
+      }
+      else {
+        this.bombs[index].prefix = "";
+        this.bombs[index].suffix = this.bombs[index].word;
+      }
+
       if (this.bombs[index]) {
         if (this.bombs[index].word.toUpperCase() == this.typingpad.toUpperCase()) {
           this.typingpad = "";
@@ -119,8 +135,13 @@ export class AppComponent {
         }
       }
     }
+
+
     this.oldtypingpad = this.typingpad;
     this.lock = 0;
+    if (noPrefix) {
+      this.typingpad = "";
+    }
   }
 
   addToLog(word: logWord) {

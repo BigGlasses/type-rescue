@@ -48,16 +48,27 @@ input{
     margin: 0;
 }
 
-.title {
+.title-container {
     position: absolute;
-    left: 50px;
+    left: 0;
+    width: calc(50% - 380px);
+    padding-left: 40px;
+    padding-right: 40px;
     top: 50px;
+}
+
+.title {
     font-style: italic;
     font-size: 72px;
     color: black;
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.title > button {
+    width: 330px;
 }
 
 button {
@@ -199,7 +210,7 @@ button {
     background-color: white;
     height: 100%;
     z-index: 99;
-    box-shadow: 0 0 30px black;
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.66);
 }
 
 #gameover > p {

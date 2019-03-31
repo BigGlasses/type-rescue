@@ -52,7 +52,7 @@ export class AppComponent {
   }
 
   stop() {
-    this.matSnackBar.open('Finish score: ' + this.score, 'close', { duration: 5000 });
+    // this.matSnackBar.open('Finish score: ' + this.score, 'close', { duration: 5000 });
     this.sub.unsubscribe();
     this.gameover = true;
   }

@@ -85,6 +85,7 @@ export class AppComponent {
 
   restart() {
     this.tickRate = 0.1;
+    this.tickRateDisplay = Math.round(this.tickRate / 0.1 * 10) / 10.0;
     this.typingpad = "";
     this.score = 0;
     this.log = [];
@@ -122,7 +123,7 @@ export class AppComponent {
         words.splice(words.indexOf(this.bombs[index].word), 1);
       }
     }
-    var time = 10 * this.tickRateDisplay + Math.floor(10 * Math.random()) ;
+    var time = 10 * this.tickRateDisplay + Math.floor(10 * Math.random());
     var newBomb: bomb = {
       word: words[Math.floor(Math.random() * (words.length - 1))],
       prefix: "",
@@ -145,29 +146,31 @@ export class AppComponent {
     }
     var noPrefix = true;
     this.lock = 1;
-    for (let index = 3; index < this.bombs.length; index++) {
-      if (this.bombs[index].word.startsWith(this.typingpad.toUpperCase())) {
-        this.bombs[index].prefix = this.typingpad;
-        this.bombs[index].suffix = this.bombs[index].word.substr(this.typingpad.length);
-        noPrefix = false;
-      }
-      else {
-        this.bombs[index].prefix = "";
-        this.bombs[index].suffix = this.bombs[index].word;
-      }
+    try {
 
-      if (this.bombs[index]) {
-        if (this.bombs[index].word.toUpperCase() == this.typingpad.toUpperCase()) {
-          this.typingpad = "";
-          this.blowUp(index);
+      for (let index = 3; index < this.bombs.length; index++) {
+        if (this.bombs[index].word.startsWith(this.typingpad.toUpperCase())) {
+          this.bombs[index].prefix = this.typingpad;
+          this.bombs[index].suffix = this.bombs[index].word.substr(this.typingpad.length);
+          noPrefix = false;
+        }
+        else {
+          this.bombs[index].prefix = "";
+          this.bombs[index].suffix = this.bombs[index].word;
+        }
+
+        if (this.bombs[index]) {
+          if (this.bombs[index].word.toUpperCase() == this.typingpad.toUpperCase()) {
+            this.typingpad = "";
+            this.blowUp(index);
+          }
         }
       }
     }
-
-
-    this.oldtypingpad = this.typingpad;
-    this.lock = 0;
-    console.log(noPrefix);
+    finally {
+      this.oldtypingpad = this.typingpad;
+      this.lock = 0;
+    }
     if (noPrefix) {
       this.typingpad = "";
     }

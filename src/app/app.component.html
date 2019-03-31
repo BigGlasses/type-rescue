@@ -38,4 +38,6 @@
         </div>
         <input matInput name="typingpad" type="text" [(ngModel)]="typingpad" (ngModelChange)="typingUpdate()" ngModel autofocus>
     </div>
+
+    <div *ngIf="gameover" id="gameover">Game Over!<p>Scored {{score}} points</p></div>
 </div>

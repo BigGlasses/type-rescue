@@ -16,6 +16,7 @@ export class AppComponent {
 
   bombs: bomb[];
   score = 0;
+  gameover = false;
   adjacents = [[], [], [], [4, 6], [3, 5, 7], [4, 8], [3, 7], [4, 6, 8], [5, 7]];
   lock = 0;
   log: logWord[];
@@ -53,6 +54,7 @@ export class AppComponent {
   stop() {
     this.matSnackBar.open('Finish score: ' + this.score, 'close', { duration: 5000 });
     this.sub.unsubscribe();
+    this.gameover = true;
   }
 
   restart() {
@@ -63,7 +65,7 @@ export class AppComponent {
     }
     this.sub = this.bombTicker.subscribe(n =>
       this.tickDown());
-      
+    this.gameover = false;
   }
 
   moveDown(): void {

@@ -20,10 +20,10 @@ export class AppComponent {
   tickRateDisplay = 0.1;
   gameover = false;
   adjacents = [[], [], [], [4, 6], [3, 5, 7], [4, 8], [3, 7, 9], [4, 6, 8, 10], [5, 7, 11], [6, 10], [9, 7, 11], [10, 8]];
-  lock = 0;
   log: logWord[];
   bombTicker: Observable<number>;
   bombGuiFaller: Observable<number>;
+  inputGrabber: Observable<number>;
   game_active: boolean = false;
 
   constructor(private matSnackBar: MatSnackBar) { };
@@ -36,11 +36,14 @@ export class AppComponent {
     }
     this.bombTicker = interval(100);
     this.bombGuiFaller = interval(10);
+    this.inputGrabber = interval(10);
     // Subscribe to begin ticking bombs
     this.bombTicker.subscribe(n =>
       this.tickDown());
-    this.bombGuiFaller.subscribe(n =>
-      this.guiFall());
+      this.bombGuiFaller.subscribe(n =>
+        this.guiFall());
+    this.inputGrabber.subscribe(n =>
+      this.typingUpdate());
   }
 
 
@@ -140,12 +143,10 @@ export class AppComponent {
 
   typingUpdate() {
     if (!this.game_active) return;
-    while (this.lock == 1) 1;
     if (this.oldtypingpad.length > this.typingpad.length) {
       this.typingpad = "";
     }
     var noPrefix = true;
-    this.lock = 1;
     try {
 
       for (let index = 3; index < this.bombs.length; index++) {
@@ -169,7 +170,6 @@ export class AppComponent {
     }
     finally {
       this.oldtypingpad = this.typingpad;
-      this.lock = 0;
     }
     if (noPrefix) {
       this.typingpad = "";

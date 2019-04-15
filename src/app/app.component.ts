@@ -27,6 +27,8 @@ export class AppComponent {
   game_active: boolean = false;
   game_played = false;
   show_help = false;
+  global_anim_target = {'animation': 'headShake 1s infinite'};
+  global_anim = {};
 
   constructor(private matSnackBar: MatSnackBar) { };
 
@@ -52,17 +54,27 @@ export class AppComponent {
 
   tickDown(): void {
     if (!this.game_active) return;
+    let numUrgent = 0;
     for (let index = 3; index < this.bombs.length; index++) {
       if (this.bombs[index]) {
         if (this.bombs[index].newtime >= 0) this.bombs[index].newtime -= 0.5;
         this.bombs[index].time -= this.tickRate;
         this.bombs[index].timedisplay = Math.round(this.bombs[index].time);
 
+        if (this.bombs[index].time < 6 * this.tickRateDisplay) {
+          numUrgent += 1;
+        }
+
         if (this.bombs[index].time <= 0) {
           this.stop();
           return;
         }
       }
+    }
+    if (numUrgent >= 2) {
+      this.global_anim = this.global_anim_target;
+    } else {
+      this.global_anim = {};
     }
     this.tickRate += 0.0002;
     this.tickRateDisplay = Math.round(this.tickRate / 0.1 * 10) / 10.0;
@@ -84,6 +96,7 @@ export class AppComponent {
   }
 
   stop() {
+    this.global_anim = {};
     this.game_played = true;
     this.gameover = true;
     this.game_active = false;

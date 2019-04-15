@@ -3,10 +3,10 @@
         <button mat-button *ngIf="!game_active && !game_played" (click)="restart()" class="start-button start-button-abs">Start</button>
     </div>
     <div class="title-container">
-        <div class="title">
+        <div class="title" [ngStyle]="global_anim">
             Type-Rescue
         </div>
-        <div class="score">
+        <div class="score" [ngStyle]="global_anim">
             <p class="score-desc">
                 Score:
             </p>
@@ -15,7 +15,7 @@
             </p>
         </div>
     </div>
-    <div class="bombContainer">
+    <div class="bombContainer" [ngStyle]="global_anim">
         <mat-grid-list cols="3" rowHeight="1:1">
             <mat-grid-tile *ngFor="let bomb of bombs; let i=index" [ngClass]="{'top-grid': i < 3}">
                 <ng-container *ngIf="bomb">
@@ -36,7 +36,7 @@
         </mat-grid-list>
     </div>
 
-    <div class="wordlog">
+    <div class="wordlog" [ngStyle]="global_anim">
         <p *ngFor="let word of log">
             {{word.word}} + {{word.score}}
         </p>
@@ -59,7 +59,7 @@
                     <p> 5. Bombs will slowly tick faster as the game continues. </p>
                 </div>
             </div>
-            <h1 id="bombspeed"> BOMB SPEED: {{tickRateDisplay}} X</h1>
+            <h1 id="bombspeed" [ngStyle]="global_anim"> BOMB SPEED: {{tickRateDisplay}} X</h1>
     </div>
 
     <div *ngIf="gameover" id="gameover">

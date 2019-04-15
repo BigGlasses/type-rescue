@@ -69,7 +69,7 @@ input{
 
 .title {
     font-style: italic;
-    font-size: 90px;
+    font-size: 110px;
     color: white;
     /* text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white; */
     display: flex;
@@ -291,10 +291,6 @@ button {
     display: block;
 }
 
-#bombspeed {
-    padding: 5px 20px;
-}
-
 #help-container {
     display: flex;
     flex-direction: column;
@@ -309,4 +305,9 @@ button {
     font-size: 20px;
     display: block;
     z-index: 10;
+}
+
+
+#bombspeed {
+    padding: 5px 20px;
 }

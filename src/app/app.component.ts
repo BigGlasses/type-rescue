@@ -32,11 +32,11 @@ export class AppComponent {
   game_played = false;
   show_help = false;
   global_anim = {};
+  bombsoon_anim = {};
 
   show_leaderboard = false;
   leaderboard: ILeaderboardEntry[];
   playername: string;
-  o_ka = 'dont change this';
 
   constructor(private matSnackBar: MatSnackBar) { };
 
@@ -69,6 +69,10 @@ export class AppComponent {
     return {'animation': `headShake ${0.1/this.tickRate}s infinite`};
   }
 
+  get bombsoon_anim_target() {
+    return {'animation': `urgent linear ${0.05/this.tickRate}s infinite`};
+  }
+
   tickDown(): void {
     if (!this.game_active) return;
     let numUrgent = 0;
@@ -88,6 +92,7 @@ export class AppComponent {
         }
       }
     }
+    this.bombsoon_anim = this.bombsoon_anim_target;
     if (numUrgent >= 2) {
       this.global_anim = this.global_anim_target;
     } else {
@@ -116,12 +121,8 @@ export class AppComponent {
     try {
       const resp: Response = await window.fetch(`${AppComponent.firebase}?orderBy="score"&limitToLast=${AppComponent.leaderboardLimit}`);
       if (resp.status === 200) {
-        const data: IRawLeaderboardEntry[] = await resp.json();
-        console.log(data);
-        const entries: ILeaderboardEntry[] = Object.values(data).map(item => ({
-          name: item.name,
-          score: parseInt(this.obf(this.o_ka, atob(item.score))),
-        }));
+        const data: ILeaderboardEntr[] = Object.values(await resp.json());
+        const entries = data.filter(entry => this.obf(entry.timestamp.toString(), atob(entry.token)) === entry.score.toString());
         entries.sort((a, b) => b.score - a.score);
         return entries;
       } else {
@@ -150,6 +151,7 @@ export class AppComponent {
   async submitScore(): Promise<void> {
     const elem = document.getElementById('name-input');
     let name = elem && (<HTMLInputElement>elem).value;
+    const now = Math.floor(Date.now());
     if (name) {
       name = name.substring(0, 10);
       this.playername = name;
@@ -161,8 +163,9 @@ export class AppComponent {
         },
         body: JSON.stringify({
           'name': name,
-          'score': btoa(this.obf(this.o_ka, this.score.toString())),
-          'timestamp': Math.floor(Date.now()),
+          'score': this.score,
+          'token': btoa(this.obf(now.toString(), this.score.toString())),
+          'timestamp': now,
         })
       });
     }
@@ -343,9 +346,6 @@ interface bomb {
 interface ILeaderboardEntry {
   name: string;
   score: number;
-}
-
-interface IRawLeaderboardEntry {
-  name: string;
-  score: string;
+  timestamp: number,
+  token: string,
 }

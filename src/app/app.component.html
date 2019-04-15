@@ -23,7 +23,7 @@
                     <div class="bomb animated "
                         [ngClass]="{'bombred': bomb.color == 'red', 'bombblue': bomb.color == 'blue', 'bombgreen': bomb.color == 'green' }"
                         [ngStyle]="{'top': '-' + bomb.offsetY + 'px', 'opacity' : 1 - bomb.newtime}">
-                        <div class="bombtime" [ngClass]="{'bombsoon': bomb.time < 6 * tickRateDisplay}">
+                        <div class="bombtime" [ngStyle]="(bomb.time < 6*tickRateDisplay) && bombsoon_anim">
                             {{ bomb.timedisplay}}
                         </div>
                         <div *ngIf="i > 2" class="bombword">

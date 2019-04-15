@@ -93,13 +93,22 @@ button {
     text-align: center;
 }
 
-.score >p{
-    font-size: 72px;
-    color: black;
-    margin: 10px;
+.score > p {
+    color: white;
+    margin: 0;
     /* text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black; */
 }
 
+.score > .score-number {
+    margin-top: -20px;
+    font-size: 90px;
+}
+
+
+.score > .score-desc {
+    margin-top: 100px;
+    font-size: 40px;
+}
 
 .bombContainer {
     max-width : 30vw;

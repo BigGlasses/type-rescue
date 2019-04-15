@@ -6,6 +6,14 @@
         <div class="title">
             Type-Rescue
         </div>
+        <div class="score">
+            <p class="score-desc">
+                Score:
+            </p>
+            <p class="score-number" >
+                {{score}}
+            </p>
+        </div>
     </div>
     <div class="bombContainer">
         <mat-grid-list cols="3" rowHeight="1:1">
@@ -36,11 +44,6 @@
 
 
     <div id="bombbar">
-        <div class="score">
-            <p>
-                {{score}}
-            </p>
-        </div>
         <input matInput name="typingpad" type="text" [(ngModel)]="typingpad" ngModel autofocus>
     </div>
 

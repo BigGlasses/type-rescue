@@ -26,6 +26,7 @@ export class AppComponent {
   inputGrabber: Observable<number>;
   game_active: boolean = false;
   game_played = false;
+  show_help = false;
 
   constructor(private matSnackBar: MatSnackBar) { };
 
@@ -176,6 +177,10 @@ export class AppComponent {
     if (noPrefix) {
       this.typingpad = "";
     }
+  }
+
+  showHelp() {
+    this.show_help = !this.show_help;
   }
 
   addToLog(word: logWord) {

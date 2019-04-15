@@ -273,3 +273,40 @@ button {
     position: relative;
     left: -50%;
 }
+
+#sidebar {
+    color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    width: 20%;
+}
+
+#help-text {
+    animation: bounceInLeft 1s linear 0s 1;
+    background: white;
+    color: rgb(235, 35, 0);
+    padding: 10px 40px;
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.33);
+    display: block;
+}
+
+#bombspeed {
+    padding: 5px 20px;
+}
+
+#help-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 400px;
+}
+
+#help-button {
+    border-radius: 0;
+    color: rgb(235, 35, 0);
+    font-size: 20px;
+    display: block;
+    z-index: 10;
+}

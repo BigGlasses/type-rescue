@@ -47,15 +47,19 @@
         <input matInput name="typingpad" type="text" [(ngModel)]="typingpad" ngModel autofocus>
     </div>
 
-    <div style="color: white; position: fixed; left: 0; bottom: 0px; width: 20%; padding: 20px;">
-            <h3> Rules </h3>
-            <p> 1. Bombs slowly tick down. When they hit a time of zero you lose. </p>
-            <p> 2. Type the words under the bombs into the defuser to defuse the bombs. </p>
-            <p> 3. Defusing a bomb will also diffuse adjacent bombs of the same color. </p>
-            <p> 4. Defusing multiple bombs at once improves score and gives more defuse on remaining bombs. </p>
-            <p> 5. Bombs will slowly tick faster as the game continues. </p>
-
-            <h1> BOMB SPEED: {{tickRateDisplay}} X</h1>
+    <div id="sidebar" >
+            <div id="help-container">
+                <button mat-button (click)="showHelp()" id="help-button">Help!</button>
+                <div id="help-text" *ngIf="show_help">
+                    <h3> Rules </h3>
+                    <p> 1. Bombs slowly tick down. When they hit a time of zero you lose. </p>
+                    <p> 2. Type the words under the bombs into the defuser to defuse the bombs. </p>
+                    <p> 3. Defusing a bomb will also diffuse adjacent bombs of the same color. </p>
+                    <p> 4. Defusing multiple bombs at once improves score and gives more defuse on remaining bombs. </p>
+                    <p> 5. Bombs will slowly tick faster as the game continues. </p>
+                </div>
+            </div>
+            <h1 id="bombspeed"> BOMB SPEED: {{tickRateDisplay}} X</h1>
     </div>
 
     <div *ngIf="gameover" id="gameover">

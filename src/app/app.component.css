@@ -69,9 +69,9 @@ input{
 
 .title {
     font-style: italic;
-    font-size: 72px;
-    color: black;
-    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+    font-size: 90px;
+    color: white;
+    /* text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -225,7 +225,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 82px;
     text-align: center;
     color: black;
@@ -240,4 +240,27 @@ button {
     margin: 0;
     font-size: 32px;
     /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+}
+
+#gameover > #spacer {
+    display: block;
+    height: 240px;
+}
+
+#start-container {
+    position: absolute;
+    left: 50%;
+    top: calc(50% - 50px);
+}
+#start-button {
+    position: relative;
+    left: -50%;
+    z-index: 999;
+    font-size: 100px;
+    height: 100px;
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.33);
+    background-color: rgb(235, 35, 0);
+    border-radius: 20px;
+    color: white;
+    animation: pulse 1s infinite;
 }

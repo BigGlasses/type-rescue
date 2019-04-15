@@ -1,8 +1,10 @@
 <div class="game-container">
+    <div id="start-container">
+        <button mat-button *ngIf="!game_active" (click)="restart()" id="start-button">{{startbutton_text}}</button>
+    </div>
     <div class="title-container">
         <div class="title">
             Type-Rescue
-            <button mat-button *ngIf="!game_active" (click)="restart()"> Start </button>
         </div>
     </div>
     <div class="bombContainer">
@@ -53,5 +55,5 @@
             <h1> BOMB SPEED: {{tickRateDisplay}} X</h1>
     </div>
 
-    <div *ngIf="gameover" id="gameover">Game Over!<p>Scored {{score}} points</p></div>
+    <div *ngIf="gameover" id="gameover"><div id="spacer"></div>Game Over!<p>Scored {{score}} points</p></div>
 </div>

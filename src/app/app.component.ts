@@ -25,6 +25,7 @@ export class AppComponent {
   bombGuiFaller: Observable<number>;
   inputGrabber: Observable<number>;
   game_active: boolean = false;
+  startbutton_text = 'start!';
 
   constructor(private matSnackBar: MatSnackBar) { };
 
@@ -82,6 +83,7 @@ export class AppComponent {
   }
 
   stop() {
+    this.startbutton_text = 'restart!';
     this.gameover = true;
     this.game_active = false;
   }

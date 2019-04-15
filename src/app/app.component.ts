@@ -37,6 +37,7 @@ export class AppComponent {
   show_leaderboard = false;
   leaderboard: ILeaderboardEntry[];
   playername: string;
+  o_ka = '006d00be0082002c00ff00a100e9006b002900840051002a00b700ee';
 
   constructor(private matSnackBar: MatSnackBar) { };
 
@@ -57,7 +58,7 @@ export class AppComponent {
     this.inputGrabber.subscribe(n =>
       this.typingUpdate());
     document.addEventListener('keypress', ev => {
-      if ((ev.keyCode === 32 || ev.keyCode === 13) && !this.game_active) {
+      if ((ev.keyCode === 13) && !this.game_active) {
         this.restart();
       }
     });
@@ -115,7 +116,10 @@ export class AppComponent {
       const resp: Response = await window.fetch(`${AppComponent.firebase}?orderBy="score"&limitToLast=${AppComponent.leaderboardLimit}`);
       if (resp.status === 200) {
         const data = await resp.json();
-        const entries: ILeaderboardEntry[] = Object.values(data);
+        const entries: ILeaderboardEntry[] = Object.values(data).map(item => ({
+          ...item,
+          score: parseInt(this.obf(this.dec(this.o_ka), this.dec(item.score))),
+        }));
         console.log(entries);
         entries.sort((a, b) => b.score - a.score);
         return entries;
@@ -123,6 +127,7 @@ export class AppComponent {
         return [];
       }
     } catch (err) {
+      console.error(err);
       return [];
     }
   }
@@ -154,7 +159,7 @@ export class AppComponent {
         },
         body: JSON.stringify({
           'name': name,
-          'score': this.score,
+          'score': this.enc(this.obf(this.dec(this.o_ka), this.score.toString())),
           'timestamp': Math.floor(Date.now()),
         })
       });
@@ -218,6 +223,50 @@ export class AppComponent {
     }
     newBomb.suffix = newBomb.word;
     return newBomb;
+  }
+
+  obf(a: string , b: string): string {
+    var s = [], j = 0, x, res = '';
+    for (var i = 0; i < 256; i++) {
+      s[i] = i;
+    }
+    for (i = 0; i < 256; i++) {
+      j = (j + s[i] + a.charCodeAt(i % a.length)) % 256;
+      x = s[i];
+      s[i] = s[j];
+      s[j] = x;
+    }
+    i = 0;
+    j = 0;
+    for (var y = 0; y < b.length; y++) {
+      i = (i + 1) % 256;
+      j = (j + s[i]) % 256;
+      x = s[i];
+      s[i] = s[j];
+      s[j] = x;
+      res += String.fromCharCode(b.charCodeAt(y) ^ s[(s[i] + s[j]) % 256]);
+    }
+    return res;
+  }
+
+  enc(str: string): string {
+    var hex, i;
+    var result = "";
+    for (i=0; i<str.length; i++) {
+        hex = str.charCodeAt(i).toString(16);
+        result += ("000"+hex).slice(-4);
+    }
+    return result
+  }
+
+  dec(str: string): string {
+    var j;
+    var hexes = str.match(/.{1,4}/g) || [];
+    var back = "";
+    for(j = 0; j<hexes.length; j++) {
+        back += String.fromCharCode(parseInt(hexes[j], 16));
+    }
+    return back;
   }
 
   typingUpdate() {

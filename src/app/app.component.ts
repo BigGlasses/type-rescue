@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { interval, Observable, Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+import Cookies from 'js-cookie';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,9 @@ import { MatSnackBar } from '@angular/material';
 })
 
 export class AppComponent {
+  static firebase = 'https://type-rescue.firebaseio.com/leaderboard.json';
+  static leaderboardLimit = 8;
+
   dictionary: string[] = ["DISFIGUREMENT", "BLISSFULLY", "PRAYER", "ARK", "PENGUIN", "CADAVER", "YOUNG", "HARPOON", "DRUM", "HARLOT", "DINNER", "CHEMICAL", "FORK", "EXAMINER", "PERILOUS", "CODDLE", "PUBLIC", "DIZZY", "HOBBY", "SONG", "GUM", "GOODBYE", "ACCESSORIES", "ETHICAL", "BACKYARD", "JUNKYARD", "SUNRISE", "CAPTAIN", "EXPLICIT", "HAYWIRE", "BLADE", "EAR", "GHETTO", "ELASTIC", "ALPHABET", "BLOWGUN", "SMUT", "PLASMA", "DOBERMAN", "CODDLE", "VISION", "DECADENCE", "WASP", "EMOTION", "CASKET", "HANGMAN", "DECAPITATION", "HERB", "BIZARRE", "VIBRATION", "EMPTY", "FERTILITY", "CHAMBER", "BRILLIANT", "FIERY", "BAKE", "ADULT", "FINANCIAL", "FORNICATOR", "ARSONIST", "ABSORB", "CRIMSON", "LUCKY", "POSSESSION", "SHARK", "DISK", "FILTER", "MOLTEN", "AUTOPILOT", "CATTLE", "FURRY", "EXPLICIT", "CONDEMNED", "HORRIFIC", "HOTHEAD", "HOOPLA", "PLAYTIME", "BLEEDER", "COAL", "FIEND", "CHISEL", "FOUL", "FLIP", "EXPLICIT", "FEEL", "FLUCTUATION", "MURDERER", "FOG", "GRIM", "POUND", "WINTER", "PROPELLER", "FLUCTUATION", "DIABOLATRY", "DEGENERATE", "JUICE", "BLOSSOM", "FREEDOM", "GLUTTON", "DOME", "TASTE", "VISITOR", "FIGHT", "KINGDOM", "IMPURE", "CHILDISH", "ART", "ADHESIVE", "TRAUMA", "MASTER", "GIANT", "PRANK", "BIGGEST", "CONTAGIOUS", "DISCIPLINE", "BLUBBER", "COMFORTABLE", "ACROBATIC", "OPPOSITION", "CRABS", "BALLET", "HIT", "BLEAK", "AGAINST", "CLOCK", "WAKE", "VICTORY", "CELLBLOCK", "DECADENT", "DIAMOND", "SALT", "BUCKET", "ACTOR", "ACOUSTIC", "HUGE", "HARMONY", "GEOMETRY", "YOUNG", "CONFUSED", "BEGGING", "BARNYARD", "AIM", "GREASY", "LOGIC", "PURPOSE", "INDECENT", "FRECKLED", "DITCH", "PUZZLE", "BUFFET", "SHOCK", "BLESSING", "FILTER", "RUBY", "BARBER", "BLINKS", "LIMITLESS", "AMBER", "FLUTTER", "DOWNFALL", "AVAILABLE", "CATHEDRAL", "BUTCHER", "HONEYMOON", "CINNAMON", "MARGINAL", "SCAR", "HABIT", "AIRTIGHT", "DIRECTOR", "THINK", "QUICK", "HEARTBEAT", "TANK", "ANATOMY", "CHRONOLOGICAL", "GENERATION", "ALPHABETIC", "MOIST", "BRUTE", "BRASS", "GANGLAND", "ALSO", "SOUP", "AGENDA", "AMERICANA", "CREATION", "FINCH", "COMPULSION", "ABANDON", "BEARD", "FAST", "STEEL", "BACKWARD", "FIRE", "CLUB", "JUSTICE", "BEATEN", "JUNIOR", "HEART", "GADGET", "ARTIFICIAL", "POCKET", "FAITH", "COMPLETE", "HABIT", "TRAUMA", "SERENITY", "ALLIGATOR", "CONCEPTUAL", "BIOLOGICAL", "CREW", "HUNCHBACK", "ASTOUNDING", "CORROSIVE", "HIDE", "GANGLAND", "COMPOUND", "ATTEMPT", "CHARM", "REBEL", "HELMET", "BED", "GLASS", "LICKER", "HOP", "FORTUNE", "CONSPIRACY", "BANK", "BIONIC", "BRIBERY", "NARCOTIC", "TREASURE", "NINETEEN", "COMPLICATED", "DREAM", "AMBITION", "ENLARGE", "LUST", "ARK", "BUMBLE", "DAREDEVIL", "PROCESS", "PARALYSIS", "KIND", "BETWEEN", "ANKH", "LOCUST", "CONSUMPTION", "GINGER", "HACK", "BAKE", "BARBERSHOP", "BINGE", "DANCER", "IMAGINARY"];
   title = 'repo';
   typingpad: string;
@@ -24,11 +28,15 @@ export class AppComponent {
   bombTicker: Observable<number>;
   bombGuiFaller: Observable<number>;
   inputGrabber: Observable<number>;
-  game_active: boolean = false;
+  game_active = false;
   game_played = false;
   show_help = false;
   global_anim_target = {'animation': 'headShake 1s infinite'};
   global_anim = {};
+
+  show_leaderboard = false;
+  leaderboard: ILeaderboardEntry[];
+  playername: string;
 
   constructor(private matSnackBar: MatSnackBar) { };
 
@@ -48,6 +56,13 @@ export class AppComponent {
         this.guiFall());
     this.inputGrabber.subscribe(n =>
       this.typingUpdate());
+    document.addEventListener('keypress', ev => {
+      if ((ev.keyCode === 32 || ev.keyCode === 13) && !this.game_active) {
+        this.restart();
+      }
+    });
+    document.getElementById('type-input').focus();
+    this.playername = Cookies.get('playername') || '';
   }
 
 
@@ -95,14 +110,58 @@ export class AppComponent {
 
   }
 
+  async getLeaderBoard(): Promise<ILeaderboardEntry[]> {
+    try {
+      const resp: Response = await window.fetch(`${AppComponent.firebase}?orderBy="score"&limitToLast=${AppComponent.leaderboardLimit}`);
+      if (resp.status === 200) {
+        const data = await resp.json();
+        const entries: ILeaderboardEntry[] = Object.values(data);
+        console.log(entries);
+        entries.sort((a, b) => b.score - a.score);
+        return entries;
+      } else {
+        return [];
+      }
+    } catch (err) {
+      return [];
+    }
+  }
+
   stop() {
     this.global_anim = {};
     this.game_played = true;
     this.gameover = true;
     this.game_active = false;
+    this.getLeaderBoard().then(dat => {
+      if (dat.length) {
+        this.leaderboard = dat;
+        this.show_leaderboard = true;
+        setTimeout(() => document.getElementById('name-input').focus(), 50);
+      }
+    });
+  }
+
+  async submitScore(): Promise<void> {
+    const name = (<HTMLInputElement>document.getElementById('name-input')).value;
+    if (name) {
+      this.playername = name;
+      Cookies.set('playername', this.playername);
+      await window.fetch(AppComponent.firebase, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          'name': name,
+          'score': this.score,
+          'timestamp': Math.floor(Date.now()),
+        })
+      });
+    }
   }
 
   restart() {
+    this.submitScore();
     this.tickRate = 0.1;
     this.tickRateDisplay = Math.round(this.tickRate / 0.1 * 10) / 10.0;
     this.typingpad = "";
@@ -113,6 +172,9 @@ export class AppComponent {
     }
     this.game_active = true;
     this.gameover = false;
+    this.leaderboard = [];
+    this.show_leaderboard = false;
+    document.getElementById('type-input').focus();
   }
 
   moveDown(): void {
@@ -244,4 +306,9 @@ interface bomb {
   time: number,
   color: string,
   offsetY: number
+}
+
+interface ILeaderboardEntry {
+  name: string;
+  score: number;
 }

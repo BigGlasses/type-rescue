@@ -31,13 +31,12 @@ export class AppComponent {
   game_active = false;
   game_played = false;
   show_help = false;
-  global_anim_target = {'animation': 'headShake 1s infinite'};
   global_anim = {};
 
   show_leaderboard = false;
   leaderboard: ILeaderboardEntry[];
   playername: string;
-  o_ka = '006d00be0082002c00ff00a100e9006b002900840051002a00b700ee';
+  o_ka = 'dont change this';
 
   constructor(private matSnackBar: MatSnackBar) { };
 
@@ -66,7 +65,9 @@ export class AppComponent {
     this.playername = Cookies.get('playername') || '';
   }
 
-
+  get global_anim_target() {
+    return {'animation': `headShake ${0.1/this.tickRate}s infinite`};
+  }
 
   tickDown(): void {
     if (!this.game_active) return;
@@ -115,12 +116,12 @@ export class AppComponent {
     try {
       const resp: Response = await window.fetch(`${AppComponent.firebase}?orderBy="score"&limitToLast=${AppComponent.leaderboardLimit}`);
       if (resp.status === 200) {
-        const data = await resp.json();
+        const data: IRawLeaderboardEntry[] = await resp.json();
+        console.log(data);
         const entries: ILeaderboardEntry[] = Object.values(data).map(item => ({
-          ...item,
-          score: parseInt(this.obf(this.dec(this.o_ka), this.dec(item.score))),
+          name: item.name,
+          score: parseInt(this.obf(this.o_ka, atob(item.score))),
         }));
-        console.log(entries);
         entries.sort((a, b) => b.score - a.score);
         return entries;
       } else {
@@ -147,7 +148,8 @@ export class AppComponent {
   }
 
   async submitScore(): Promise<void> {
-    let name = (<HTMLInputElement>document.getElementById('name-input')).value;
+    const elem = document.getElementById('name-input');
+    let name = elem && (<HTMLInputElement>elem).value;
     if (name) {
       name = name.substring(0, 10);
       this.playername = name;
@@ -159,7 +161,7 @@ export class AppComponent {
         },
         body: JSON.stringify({
           'name': name,
-          'score': this.enc(this.obf(this.dec(this.o_ka), this.score.toString())),
+          'score': btoa(this.obf(this.o_ka, this.score.toString())),
           'timestamp': Math.floor(Date.now()),
         })
       });
@@ -247,26 +249,6 @@ export class AppComponent {
       res += String.fromCharCode(b.charCodeAt(y) ^ s[(s[i] + s[j]) % 256]);
     }
     return res;
-  }
-
-  enc(str: string): string {
-    var hex, i;
-    var result = "";
-    for (i=0; i<str.length; i++) {
-        hex = str.charCodeAt(i).toString(16);
-        result += ("000"+hex).slice(-4);
-    }
-    return result
-  }
-
-  dec(str: string): string {
-    var j;
-    var hexes = str.match(/.{1,4}/g) || [];
-    var back = "";
-    for(j = 0; j<hexes.length; j++) {
-        back += String.fromCharCode(parseInt(hexes[j], 16));
-    }
-    return back;
   }
 
   typingUpdate() {
@@ -361,4 +343,9 @@ interface bomb {
 interface ILeaderboardEntry {
   name: string;
   score: number;
+}
+
+interface IRawLeaderboardEntry {
+  name: string;
+  score: string;
 }

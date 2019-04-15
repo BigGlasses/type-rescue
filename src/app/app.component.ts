@@ -121,8 +121,17 @@ export class AppComponent {
     try {
       const resp: Response = await window.fetch(`${AppComponent.firebase}?orderBy="score"&limitToLast=${AppComponent.leaderboardLimit}`);
       if (resp.status === 200) {
-        const data: ILeaderboardEntr[] = Object.values(await resp.json());
-        const entries = data.filter(entry => this.obf(entry.timestamp.toString(), atob(entry.token)) === entry.score.toString());
+        const data: ILeaderboardEntry[] = Object.values(await resp.json());
+        const entries: ILeaderboardEntry[] = [];
+        for (const entry of data) {
+          try {
+            if (this.obf(entry.timestamp.toString(), atob(entry.token)) === entry.score.toString()) {
+              entries.push(entry);
+            }
+          } catch {
+            continue;
+          }
+        }
         entries.sort((a, b) => b.score - a.score);
         return entries;
       } else {

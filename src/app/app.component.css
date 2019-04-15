@@ -311,3 +311,37 @@ button {
 #bombspeed {
     padding: 5px 20px;
 }
+
+#leaderboard-container {
+    animation: bounceInUp 1s linear 0s 1;
+    margin-top: 60px;
+    font-size: 24px;
+    width: 320px;
+}
+
+#leaderboard-container > h3 {
+    margin: 10px;
+}
+
+#leaderboard-container > .leaderboard-entry {
+    color: rgba(0, 0, 0, 0.75);
+    display: block;
+    display: flex;
+    justify-content: space-between;
+}
+
+#name-input {
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.75);
+    font-size: 24px;
+    font-family: 'Staatliches';
+    color: rgba(0, 0, 0, 0.75);
+    padding: 0;
+    height: 24px;
+    width: 124px;
+    text-align: left;
+}
+
+#name-input:focus {
+    outline: none;
+}

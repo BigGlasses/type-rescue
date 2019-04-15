@@ -142,8 +142,9 @@ export class AppComponent {
   }
 
   async submitScore(): Promise<void> {
-    const name = (<HTMLInputElement>document.getElementById('name-input')).value;
+    let name = (<HTMLInputElement>document.getElementById('name-input')).value;
     if (name) {
+      name = name.substring(0, 10);
       this.playername = name;
       Cookies.set('playername', this.playername);
       await window.fetch(AppComponent.firebase, {
